@@ -6,9 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  username: string; 
-  
-  emptyString(){
-    this.username = '';
+  isDisplay: boolean = false;
+  clickArray: Array<number> = [];
+  increment = 0;
+
+  constructor(){}
+
+  onDisplayDetail(): void {
+    this.isDisplay = !this.isDisplay;
+    this.increment++;
+    this.clickArray.push(this.increment);
   }
+
 }
