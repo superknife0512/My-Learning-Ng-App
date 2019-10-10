@@ -1,4 +1,20 @@
-<div>
+
+<div class="container">
+    <h1 class="title mt-2">Awesome one</h1>
+    <hr>
+    <button 
+        class="btn btn-primary mt mb-2" 
+        [disabled]="isDisable"
+        (click)="onServerChange()">Click me</button>
+    <p>{{ serverState }}</p>
     <app-server></app-server>
     <app-server></app-server>
+    <hr>
+    <div class="form-group">
+        <input 
+            type="text" 
+            class="form-control"
+            [(ngModel)]="serverName">
+        <p>{{ serverName }}</p>
+    </div>
 </div>
