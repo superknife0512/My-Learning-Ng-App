@@ -1,1 +1,13 @@
-<h1>Hello guy</h1>
+<div class="container mt-4">
+    <div class="form-group">
+        <input
+         type="text" 
+         class="form-control"
+         [(ngModel)]="username">
+        <p> {{username}} </p>
+        <button 
+            class="btn btn-warning"
+            [disabled]="!username"
+            (click)="emptyString()">Click me</button>
+    </div>
+</div>
