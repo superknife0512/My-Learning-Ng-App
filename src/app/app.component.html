@@ -1,21 +1,6 @@
+
+<app-header></app-header>
 <div class="container mt-4">
-    <button 
-        (click)="onDisplayDetail()"
-        class="btn btn-primary">
-        Display detail
-    </button>
-    <p *ngIf="isDisplay"
-        class="mt-2">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus est, 
-        ratione accusamus recusandae sed fugit deserunt velit eos cupiditate
-        blanditiis debitis inventore voluptatum itaque veniam amet, et enim 
-        ea quam!
-    </p>
-    <div class="mt-2">
-        <h5 
-            *ngFor="let click of clickArray"
-            [ngStyle]="{color: click > 4 ? 'green' : ''}"
-            [ngClass]= "{bgBlue: click > 4}"
-            > click No.{{ click }} </h5>
-    </div>
+    <h2>My Application</h2>
+    <hr>
 </div>
