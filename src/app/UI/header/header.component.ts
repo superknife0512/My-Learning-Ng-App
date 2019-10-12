@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  isDropdown: boolean = false;
+  
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onDropdown(){
+    this.isDropdown = !this.isDropdown;
   }
 
 }
