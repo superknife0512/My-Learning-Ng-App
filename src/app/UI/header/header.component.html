@@ -1,25 +1,42 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="#">Course Project</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button 
+          class="navbar-toggler" 
+          type="button"
+          (click)="isToggle = !isToggle" >
           <span class="navbar-toggler-icon"></span>
         </button>
       
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" 
+          id="navbarSupportedContent"
+          *ngIf="isToggle">
+
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Shopping List <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#">
+                Shopping List <span class="sr-only">(current)</span>
+              </a>
             </li>   
             <li class="nav-item active">
                 <a class="nav-link" href="#">Recipes </a>
             </li>   
           </ul>
           <ul class="navbar-nav my-2 my-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+            <li 
+              class="nav-item dropdown"
+              >
+              <a class="nav-link dropdown-toggle" 
+                  href="#" id="navbarDropdown" 
+                  role="button" data-toggle="dropdown"
+                  (click)="isDropdown = !isDropdown">
+                More function
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div 
+                class="dropdown-menu" 
+                aria-labelledby="navbarDropdown"
+                *ngIf="isDropdown">
                 <a class="dropdown-item" href="#">Save data</a>
                 <a class="dropdown-item" href="#">Fetch data</a>
               </div>

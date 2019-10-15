@@ -5,7 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+
 export class HeaderComponent implements OnInit {
+  isDropdown = false;
+  isToggle = true;
 
   constructor() { }
 
