@@ -1,0 +1,17 @@
+.recipe-item {
+    display: flex;
+    
+    &__left{
+        margin-right: 1rem;
+        img{
+            height: 5rem;
+            width: 6.7rem;
+            object-fit: cover;
+        }
+    }
+
+}
+
+.list-group-item {
+    cursor: pointer;
+}

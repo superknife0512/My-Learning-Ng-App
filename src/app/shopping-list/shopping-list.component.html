@@ -1,1 +1,16 @@
-<p>shopping-list works!</p>
+<app-shopping-list-edit></app-shopping-list-edit>
+<hr>
+<div class="shopping-list">
+    <ul class="list-group">
+        <div class="row">
+            <div class="col-md-7">
+                <li class="list-group-item"
+                    *ngFor="let ingr of ingredients">
+                    <div class="shopping-list__item">
+                        <h6>{{ ingr.name }} (x{{ ingr.amount }})</h6>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </ul>
+</div>
