@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
 })
  
 export class AppComponent {
+  currentPage: string = 'recipe';
 
+  onChangePage(page: string){
+    this.currentPage = page;
+  }
 }

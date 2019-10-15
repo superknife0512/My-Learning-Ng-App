@@ -1,6 +1,6 @@
-<app-shopping-list-edit></app-shopping-list-edit>
-<hr>
-<div class="shopping-list">
+<app-shopping-list-edit
+    (addIngredientEvent)="onAddIngredient($event)"></app-shopping-list-edit>
+<div class="shopping-list mt-4">
     <ul class="list-group">
         <div class="row">
             <div class="col-md-7">

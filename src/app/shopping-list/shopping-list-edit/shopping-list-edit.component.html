@@ -6,20 +6,24 @@
                 <input 
                     type="text" 
                     class="form-control" 
-                    name="name">
+                    name="name"
+                    #ingredientInput>
             </div>
             <div class="col-md-4">
                 <label for="amount">Amount</label>
                 <input 
                     type="number" 
                     name="amount"
-                    class="form-control" >
+                    class="form-control" 
+                    #amountInput>
             </div>
         </div>
     </div>
     <div class="col-md-7 mt-2">
         <div class="btn-group">
-            <button class="btn btn-success">Add</button>
+            <button 
+                class="btn btn-success"
+                (click)="addIngredient(ingredientInput, amountInput)">Add</button>
             <button class="btn btn-danger">Delete</button>
             <button class="btn btn-primary">Clear</button>
         </div>

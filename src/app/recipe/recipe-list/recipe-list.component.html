@@ -1,22 +1,6 @@
 <ul class="list-group mt-2">
-    <li class="list-group-item" aria-disabled="true"
-        *ngFor="let recipe of recipes">
-        <div class="recipe-item" >
-            <div class="recipe-item__left">
-                <img [src]="recipe.imgUrl" [alt]="recipe.name" >
-            </div>
-
-            <div class="recipe-item__right">
-                <h4 class="recipe-item__name">
-                    {{ recipe.name }}
-                </h4>
-                <p class="mt-2 recipe-item__desc">
-                    {{ recipe.desc }}
-                </p>
-            </div>
-
-        </div>
-    </li>
-
-    <!-- <app-recipe-item></app-recipe-item> -->
+    <app-recipe-item 
+        *ngFor="let recipe of recipes"
+        [recipe]="recipe"
+        (getDetailEvent)="onGetDetail($event)"></app-recipe-item>
 </ul>

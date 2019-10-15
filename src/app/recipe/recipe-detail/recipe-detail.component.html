@@ -1,16 +1,17 @@
-<div class="rep-detail mt-2">
+<div class="rep-detail mt-2"
+    *ngIf="recipe">
     <div class="row">
         <div class="col-md-12">
             <img 
-                src="https://media-cdn.tripadvisor.com/media/photo-s/15/c5/a4/14/pepperoni-lovers.jpg" 
-                alt="nothing"
+                [src]="recipe.imgUrl" 
+                [alt]="recipe.name"
                 class="mb-2">
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <h2 class="second-title mb-2">Recipe name</h2>
-            <p class="mb-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe quia minus itaque ex adipisci quaerat quisquam tenetur ullam amet ratione debitis totam quis, atque incidunt porro! Ducimus reprehenderit suscipit assumenda!</p>
+            <h2 class="second-title mb-2">{{ recipe.name }}</h2>
+            <p class="mb-2"> {{ recipe.desc }} </p>
 
             <div class="dropdown mt-2">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton">
@@ -29,4 +30,7 @@
             This is all ingredient here
         </div>
     </div>
+</div>
+<div class="row col-md-12" *ngIf="!recipe">
+    <h5>Please select a recipe to display here</h5>
 </div>

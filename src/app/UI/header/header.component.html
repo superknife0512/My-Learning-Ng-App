@@ -14,13 +14,17 @@
           *ngIf="isToggle">
 
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li 
+              class="nav-item active"
+              (click)="changePage('recipe')">
+                <a class="nav-link" href="#">Recipes </a>
+            </li>   
+            <li 
+              class="nav-item active"
+              (click)="changePage('shoppingList')">
               <a class="nav-link" href="#">
                 Shopping List <span class="sr-only">(current)</span>
               </a>
-            </li>   
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Recipes </a>
             </li>   
           </ul>
           <ul class="navbar-nav my-2 my-lg-0">
