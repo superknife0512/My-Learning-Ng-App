@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   isDropdown: boolean = false;
 
   @Output() changePageEvent = new EventEmitter<string>()
+  @Input() currentPage: string;
   
   constructor() { }
 

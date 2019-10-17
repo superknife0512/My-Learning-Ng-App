@@ -14,11 +14,22 @@
             <p class="mb-2"> {{ recipe.desc }} </p>
 
             <div class="dropdown mt-2">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton">
+                <button 
+                    class="btn btn-primary dropdown-toggle" 
+                    type="button" id="dropdownMenuButton"
+                    (click)="isDropdown = !isDropdown">
                     Make your choice
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Shopping list</a>
+                <div 
+                    class="dropdown-menu" 
+                    aria-labelledby="dropdownMenuButton"
+                    *ngIf="isDropdown">
+                    <a 
+                        class="dropdown-item" 
+                        href="#"
+                        (click)="addShoppingList(recipe.ingredients)">
+                        Add to list
+                    </a>
                     <a class="dropdown-item" href="#">Edit recipe</a>
                     <a class="dropdown-item" href="#">Delete recipe</a>
                 </div>
@@ -27,7 +38,15 @@
     </div>
     <div class="row mt-4">
         <div class="col-md-12">
-            This is all ingredient here
+            <h5>Dish ingredients</h5>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center"
+                    *ngFor="let ingr of recipe.ingredients"
+                    style="text-transform: capitalize;">
+                    {{ ingr.name }}
+                    <span class="badge badge-warning badge-pill">{{ ingr.amount }}</span>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

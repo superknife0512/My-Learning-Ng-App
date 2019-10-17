@@ -4,11 +4,10 @@
             Add more recipe
         </button>
         <hr>
-        <app-recipe-list
-            (onGetDetailEvent)="setDetail($event)"></app-recipe-list>
+        <app-recipe-list></app-recipe-list>
     </div>
     <div class="col-md-7">
         <app-recipe-detail
-            [recipe]="recipeDetail"></app-recipe-detail>
+            [recipe]="selectedRecipe"></app-recipe-detail>
     </div>    
 </div>

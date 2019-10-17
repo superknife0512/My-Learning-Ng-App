@@ -1,6 +1,5 @@
 <ul class="list-group mt-2">
     <app-recipe-item 
         *ngFor="let recipe of recipes"
-        [recipe]="recipe"
-        (getDetailEvent)="onGetDetail($event)"></app-recipe-item>
+        [recipe]="recipe"></app-recipe-item>
 </ul>

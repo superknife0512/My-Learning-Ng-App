@@ -15,13 +15,15 @@
 
           <ul class="navbar-nav mr-auto">
             <li 
-              class="nav-item active"
-              (click)="changePage('recipe')">
+              class="nav-item"
+              (click)="changePage('recipe')"
+              [ngClass]="{'active': currentPage === 'recipe'}">
                 <a class="nav-link" href="#">Recipes </a>
             </li>   
             <li 
-              class="nav-item active"
-              (click)="changePage('shoppingList')">
+              class="nav-item"
+              (click)="changePage('shoppingList')"
+              [ngClass]="{'active': currentPage === 'shoppingList'}">
               <a class="nav-link" href="#">
                 Shopping List <span class="sr-only">(current)</span>
               </a>
