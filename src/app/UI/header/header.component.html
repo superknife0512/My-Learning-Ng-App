@@ -17,14 +17,15 @@
             <li 
               class="nav-item"
               (click)="changePage('recipe')"
-              [ngClass]="{'active': currentPage === 'recipe'}">
-                <a class="nav-link" href="#">Recipes </a>
+              routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/recipes']">Recipes </a>
             </li>   
             <li 
               class="nav-item"
               (click)="changePage('shoppingList')"
-              [ngClass]="{'active': currentPage === 'shoppingList'}">
-              <a class="nav-link" href="#">
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}">
+              <a class="nav-link" [routerLink]="['/shopping-list']">
                 Shopping List <span class="sr-only">(current)</span>
               </a>
             </li>   
@@ -33,9 +34,10 @@
             <li class="nav-item dropdown">
               <a 
                 class="nav-link dropdown-toggle" 
-                href="#" id="navbarDropdown" 
+                id="navbarDropdown" 
                 role="button" 
-                (click)="onDropdown()">
+                (click)="onDropdown()"
+                style="cursor: pointer;">
                 Dropdown
               </a>
               <div 

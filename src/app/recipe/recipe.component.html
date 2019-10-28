@@ -1,13 +1,16 @@
 <div class="recipe row">
     <div class="col-md-5">
-        <button class="btn btn-warning">
+        <button class="btn btn-warning"
+            routerLink="new">
             Add more recipe
         </button>
         <hr>
         <app-recipe-list></app-recipe-list>
     </div>
     <div class="col-md-7">
-        <app-recipe-detail
-            [recipe]="selectedRecipe"></app-recipe-detail>
+        <!-- <app-recipe-detail
+            [recipe]="selectedRecipe"></app-recipe-detail> -->
+        <router-outlet></router-outlet>
     </div>    
+    
 </div>

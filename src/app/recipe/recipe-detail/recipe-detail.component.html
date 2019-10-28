@@ -30,7 +30,8 @@
                         (click)="addShoppingList(recipe.ingredients)">
                         Add to list
                     </a>
-                    <a class="dropdown-item" href="#">Edit recipe</a>
+                    <a class="dropdown-item" 
+                        [routerLink]="['/recipes', recipe.id, 'edit']">Edit recipe</a>
                     <a class="dropdown-item" href="#">Delete recipe</a>
                 </div>
             </div>

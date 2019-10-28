@@ -16,8 +16,4 @@ export class RecipeItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  setDetail(recipeDetail: Recipe) {
-    this.recipeService.setRecipeDetail(recipeDetail);
-  }
-
 }

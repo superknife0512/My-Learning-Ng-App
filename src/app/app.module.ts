@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { Routes, RouterModule } from "@angular/router";
+
 import { AppComponent } from './app.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeListComponent } from './recipe/recipe-list/recipe-list.component';
@@ -11,7 +13,19 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/shopping-list-edit.component';
 import { HeaderComponent } from './UI/header/header.component';
+import { UnselectedPageComponent } from './pages/unselected-page/unselected-page.component';
+import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
 
+const routes: Routes = [
+  {path: '', redirectTo: '/recipes', pathMatch: 'full'},
+  {path: 'recipes', component: RecipeComponent, children: [
+    {path: '', component: UnselectedPageComponent},
+    {path: 'new', component: RecipeEditComponent},
+    {path: ':recipeId', component: RecipeDetailComponent},
+    {path: ':id/edit', component: RecipeEditComponent},
+  ]},
+  {path: 'shopping-list', component: ShoppingListComponent}
+];
 
 @NgModule({
   declarations: [
@@ -23,10 +37,13 @@ import { HeaderComponent } from './UI/header/header.component';
     ShoppingListComponent,
     ShoppingListEditComponent,
     HeaderComponent,
+    UnselectedPageComponent,
+    RecipeEditComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [ShoppingService],
   bootstrap: [AppComponent]

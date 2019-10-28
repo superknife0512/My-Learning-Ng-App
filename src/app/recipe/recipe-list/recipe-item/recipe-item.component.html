@@ -1,6 +1,7 @@
 
 <li class="list-group-item" aria-disabled="true"
-    (click)="setDetail(recipe)">
+    [routerLink]="['/recipes', recipe.id]"
+    routerLinkActive="active">
     <div class="recipe-item" >
         <div class="recipe-item__left">
             <img [src]="recipe.imgUrl" [alt]="recipe.name" >
