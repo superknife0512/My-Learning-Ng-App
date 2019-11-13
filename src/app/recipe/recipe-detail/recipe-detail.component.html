@@ -26,12 +26,14 @@
                     *ngIf="isDropdown">
                     <a 
                         class="dropdown-item" 
-                        href="#"
+                        [routerLink]="['/shopping-list', recipe.id]"
                         (click)="addShoppingList(recipe.ingredients)">
                         Add to list
                     </a>
                     <a class="dropdown-item" 
-                        [routerLink]="['/recipes', recipe.id, 'edit']">Edit recipe</a>
+                        [routerLink]="['/recipes', recipe.id, 'edit']"
+                        >Edit recipe</a>
+
                     <a class="dropdown-item" href="#">Delete recipe</a>
                 </div>
             </div>

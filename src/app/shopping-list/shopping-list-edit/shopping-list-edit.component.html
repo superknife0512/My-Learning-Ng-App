@@ -1,4 +1,7 @@
-<div class="shopping-list__edit row">
+<form 
+    class="shopping-list__edit row" 
+    [formGroup]="shoppingForm"
+    (ngSubmit)="onSubmit()">
     <div class="col-md-7">
         <div class="form-row">
             <div class="col-md-8">
@@ -7,7 +10,7 @@
                     type="text" 
                     class="form-control" 
                     name="name"
-                    #ingredientInput>
+                    formControlName="ingredient">
             </div>
             <div class="col-md-4">
                 <label for="amount">Amount</label>
@@ -15,17 +18,32 @@
                     type="number" 
                     name="amount"
                     class="form-control" 
-                    #amountInput>
+                    formControlName="amount">
             </div>
         </div>
+        <span 
+            class="block-help" 
+            *ngIf="shoppingForm.invalid && shoppingForm.get('amount').touched">
+            Please enter all the fields with valid value
+        </span>
     </div>
     <div class="col-md-7 mt-2">
         <div class="btn-group">
             <button 
-                class="btn btn-success"
-                (click)="addIngredient(ingredientInput, amountInput)">Add</button>
-            <button class="btn btn-danger">Delete</button>
-            <button class="btn btn-primary">Clear</button>
+                type="submit" 
+                class="btn" 
+                [ngClass]="{'btn-success': !isEdit, 'btn-warning': isEdit}"
+                [disabled]="shoppingForm.invalid"
+                >{{isEdit ? 'Update' : 'Add'}}</button>
+
+            <button 
+                class="btn btn-danger"
+                (click)="onDelete()"
+                *ngIf="isEdit">Delete</button>
+
+            <button class="btn btn-primary"
+                (click)="onClear()"
+                [disabled]="!shoppingForm.dirty">Clear</button>
         </div>
     </div>
-</div>
+</form>

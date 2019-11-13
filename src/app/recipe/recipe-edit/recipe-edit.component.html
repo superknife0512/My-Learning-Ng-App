@@ -1,29 +1,71 @@
 <div class="recipe-edit">
     <h4>{{!isEdit ? 'Let make new recipe' : 'Update recipe'}}</h4>
-    <form class="recipe-edit__form">
+    <form 
+        class="recipe-edit__form"
+        [formGroup]="recipeForm"
+        (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="name">Recipe Name</label>
-            <input type="text" class="form-control">
+            <input 
+                type="text" 
+                class="form-control"
+                formControlName="recipeName">
         </div>
         <div class="form-group">
-            <label for="name">Description</label>
-            <input type="text" class="form-control">
+            <label for="desc">Description</label>
+            <textarea 
+                name="desc" 
+                class="form-control" 
+                rows="5"
+                formControlName="desc"></textarea>
         </div>
         <div class="form-group">
-            <label for="name">Image Url</label>
-            <input type="text" class="form-control">
+            <label for="name">Image URL</label>
+            <input type="text" class="form-control" formControlName="imgUrl">
+            <img 
+                *ngIf="recipeForm.get('imgUrl').valid" 
+                [src]="recipeForm.get('imgUrl').value" 
+                alt="some thing here" 
+                class="img-thumbnail mt-2"
+                width="300">
         </div>
-        <div class="form-group">
+
+        <div class="form-group" formArrayName="ingredients">
             <div class="d-flex align-items-center mb-2">
                 <label for="name" class="mr-2" style="margin: 0;">Ingredients</label>
-                <button class="btn btn-light btn-small">Add</button>
+                <button 
+                    class="btn btn-light btn-small"
+                    (click)="onAddIngredientControl()"
+                    type="button">Add one</button>
             </div>
-            <div class="form-inline">
-                <input type="text" class="form-control mr-2" placeholder="Ingredient name">
-                <input type="number" placeholder="Amount" class="form-control">
+            <div 
+                class="mt-2 row" 
+                *ngFor="let ing of getIngredientControls(), let i = index"
+                [formGroupName]="i">
+
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="Ingredient name" formControlName="name">
+                </div>
+                <div class="col-md-2">
+                    <input type="number" placeholder="Amount" class="form-control" formControlName="amount">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-danger" type="button">X</button>
+                </div>
             </div>
         </div>
+
+        <div class="btn-group mt-3">
+            <button class="btn"
+                type="submit"
+                [ngClass]="{'btn-success': !isEdit, 'btn-primary': isEdit}"
+                [disabled]="recipeForm.invalid"
+                >
+                {{ isEdit ? 'Update recipe' : 'Create new recipe' }}
+            </button>
+            <button 
+                class="btn btn-warning"
+                type="button">Cancel</button>
+        </div>
     </form>
-    <button class="btn"
-        [ngClass]="{'btn-success': isEdit, 'btn-primary': !isEdit}">{{ isEdit ? 'Update recipe' : 'Create new recipe' }}</button>
 </div>

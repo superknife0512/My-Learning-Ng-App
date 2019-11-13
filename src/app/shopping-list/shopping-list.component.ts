@@ -1,12 +1,11 @@
 import { ShoppingService } from './../shared/shopping.service';
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { Ingredient } from "../shared/ingredient.model";
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss'],
-  providers: []
 })
 export class ShoppingListComponent implements OnInit {
 
@@ -20,6 +19,10 @@ export class ShoppingListComponent implements OnInit {
       .subscribe((ingredientsData: Ingredient[])=>{
         this.ingredients = ingredientsData
       })
+  }
+
+  editItem(itemId: number){
+    this.shoppingService.editingChoice.next(itemId)
   }
 
 }

@@ -1,12 +1,14 @@
 import { ShoppingService } from './shopping.service';
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from './../recipe/recipe.model';
 import { Ingredient } from './ingredient.model';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class RecipeService { 
     constructor(private shoppingService: ShoppingService){}
-    public selectRecipeEvent = new EventEmitter<Recipe>();
+    editingRecipe: Subject<string>;
+    // public selectRecipeEvent = new Subject<Recipe>();
 
     private recipes: Array<Recipe> =  [
         new Recipe(
@@ -30,10 +32,6 @@ export class RecipeService {
                 new Ingredient('fish', 1)
             ]),
     ]
-
-    // setRecipeDetail(recipeData: Recipe) {
-    //     this.selectRecipeEvent.emit(recipeData);
-    // }
 
     getRecipes(){
         return [...this.recipes]

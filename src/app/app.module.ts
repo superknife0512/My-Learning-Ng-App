@@ -1,5 +1,6 @@
+import { RecipeService } from './shared/recipe.service';
 import { ShoppingService } from './shared/shopping.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -24,7 +25,9 @@ const routes: Routes = [
     {path: ':recipeId', component: RecipeDetailComponent},
     {path: ':id/edit', component: RecipeEditComponent},
   ]},
-  {path: 'shopping-list', component: ShoppingListComponent}
+  {path: 'shopping-list', component: ShoppingListComponent, children: [
+    {path: ':id', component: ShoppingListComponent}
+  ]}
 ];
 
 @NgModule({
@@ -43,9 +46,10 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ShoppingService],
+  providers: [ShoppingService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
