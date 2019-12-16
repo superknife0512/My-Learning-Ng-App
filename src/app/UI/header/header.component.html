@@ -15,12 +15,14 @@
 
           <ul class="navbar-nav mr-auto">
             <li 
+              *ngIf="isAuth"          
               class="nav-item"
               (click)="changePage('recipe')"
               routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['/recipes']">Recipes </a>
             </li>   
             <li 
+              *ngIf="isAuth"      
               class="nav-item"
               (click)="changePage('shoppingList')"
               routerLinkActive="active"
@@ -29,22 +31,32 @@
                 Shopping List <span class="sr-only">(current)</span>
               </a>
             </li>   
+            <li 
+              *ngIf="!isAuth"
+              class="nav-item"
+              routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/auth']">Login/Signup</a>
+            </li>  
           </ul>
           <ul class="navbar-nav my-2 my-lg-0">
-            <li class="nav-item dropdown">
+            
+            <li class="nav-item dropdown" *ngIf="isAuth">
+              <a class="nav-link" style="cursor:pointer" (click)="onLogout()"> Logout </a>
+            </li>
+            <li class="nav-item dropdown" *ngIf="isAuth">
               <a 
                 class="nav-link dropdown-toggle" 
                 id="navbarDropdown" 
                 role="button" 
                 (click)="onDropdown()"
                 style="cursor: pointer;">
-                Dropdown
+                Your action
               </a>
               <div 
                 class="dropdown-menu"
                 *ngIf="isDropdown">
-                <a class="dropdown-item" href="#">Save data</a>
-                <a class="dropdown-item" href="#">Fetch data</a>
+                <a class="dropdown-item" style="cursor: pointer;" (click)="saveData()">Save data</a>
+                <a class="dropdown-item"style="cursor: pointer;" (click)="fetchData()">Fetch data</a>
               </div>
             </li>
           </ul>

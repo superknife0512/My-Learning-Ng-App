@@ -33,8 +33,10 @@
                     <a class="dropdown-item" 
                         [routerLink]="['/recipes', recipe.id, 'edit']"
                         >Edit recipe</a>
-
-                    <a class="dropdown-item" href="#">Delete recipe</a>
+                    <button 
+                        class="dropdown-item" 
+                        (click)="onDeleteRecipe(recipe.id)"
+                        >Delete recipe</button>
                 </div>
             </div>
         </div>

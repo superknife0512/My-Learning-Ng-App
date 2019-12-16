@@ -1,5 +1,5 @@
 import { ShoppingService } from './shared/shopping.service';
-// import { RecipeService } from './shared/recipe.service';
+import { RecipeService } from './shared/recipe.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
  
-export class AppComponent implements OnInit {
-  currentPage: string = 'recipe';
+export class AppComponent implements OnInit {  currentPage: string = 'recipe';
   // selectedRecipe: Recipe;
 
   constructor(private shoppingListService: ShoppingService){}

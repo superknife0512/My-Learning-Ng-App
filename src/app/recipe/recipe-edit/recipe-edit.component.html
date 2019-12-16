@@ -9,7 +9,7 @@
             <input 
                 type="text" 
                 class="form-control"
-                formControlName="recipeName">
+                formControlName="name">
         </div>
         <div class="form-group">
             <label for="desc">Description</label>
@@ -42,7 +42,6 @@
                 class="mt-2 row" 
                 *ngFor="let ing of getIngredientControls(), let i = index"
                 [formGroupName]="i">
-
                 <div class="col-md-8">
                     <input type="text" class="form-control" placeholder="Ingredient name" formControlName="name">
                 </div>
@@ -50,7 +49,10 @@
                     <input type="number" placeholder="Amount" class="form-control" formControlName="amount">
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-danger" type="button">X</button>
+                    <button 
+                        class="btn btn-danger" 
+                        type="button"
+                        (click)="deleteIngredientControl(i)">X</button>
                 </div>
             </div>
         </div>
@@ -65,7 +67,8 @@
             </button>
             <button 
                 class="btn btn-warning"
-                type="button">Cancel</button>
+                type="button"
+                (click)="clearForm()">Cancel</button>
         </div>
     </form>
 </div>

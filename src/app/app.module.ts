@@ -1,3 +1,5 @@
+import { AuthInterceptorService } from './auth/interceptor.service';
+import { AppLoadingSpinner } from './UI/loading-spinner/spinner.component';
 import { RecipeService } from './shared/recipe.service';
 import { ShoppingService } from './shared/shopping.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,9 +18,12 @@ import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/sh
 import { HeaderComponent } from './UI/header/header.component';
 import { UnselectedPageComponent } from './pages/unselected-page/unselected-page.component';
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
+  {path: 'auth', component: AuthComponent},
   {path: 'recipes', component: RecipeComponent, children: [
     {path: '', component: UnselectedPageComponent},
     {path: 'new', component: RecipeEditComponent},
@@ -42,14 +47,17 @@ const routes: Routes = [
     HeaderComponent,
     UnselectedPageComponent,
     RecipeEditComponent,
+    AuthComponent,
+    AppLoadingSpinner
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ShoppingService, RecipeService],
+  providers: [ShoppingService, RecipeService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

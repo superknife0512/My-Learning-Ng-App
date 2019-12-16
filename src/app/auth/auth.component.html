@@ -1,0 +1,46 @@
+
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <h4>{{ isSignupForm ? 'Signup' : 'Login' }}</h4>
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+    <div class="alert alert-danger mt-2" *ngIf="error">
+      <h6> {{error}} </h6>
+    </div>
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          class="form-control"
+          formControlName="email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          class="form-control"
+          formControlName="password">
+      </div>
+      <div class="form-group" *ngIf="isSignupForm">
+        <label for="cfPassword">Confirm password</label>
+        <input 
+          type="password" 
+          class="form-control"
+          formControlName="cfPassword">
+      </div>
+      <div class="btn-inline">
+        <button 
+          class="btn"
+          [ngClass]="{'btn-primary': isSignupForm, 'btn-success': !isSignupForm}"
+          [disabled]="authForm.invalid">
+          {{ isSignupForm ? 'Signup' : 'Login' }} 
+        </button> |
+        <button class="btn btn-secondary"
+          type="button"
+          (click)="switchMode()">
+          Switch {{isSignupForm ? 'Login' : 'Signup'}}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
