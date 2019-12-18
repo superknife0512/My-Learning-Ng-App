@@ -12,13 +12,13 @@ import { Router } from '@angular/router';
 })
 export class RecipeComponent implements OnInit {
 
-  constructor( private authService: AuthService, private curRoute: Router) { }
+  constructor(private authService: AuthService, private curRoute: Router) { }
 
   ngOnInit() {
-    this.authService.user.pipe(take(1)).subscribe(userData=>{
-      if(!userData.token){
-        this.curRoute.navigate(['/auth'])
+    this.authService.user.pipe(take(1)).subscribe(userData => {
+      if (!userData.token) {
+        this.curRoute.navigate(['/auth']);
       }
-    })
+    });
   }
 }

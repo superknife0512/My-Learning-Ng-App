@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptorService } from './auth/interceptor.service';
 import { AppLoadingSpinner } from './UI/loading-spinner/spinner.component';
 import { RecipeService } from './shared/recipe.service';
@@ -6,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { RecipeComponent } from './recipe/recipe.component';
@@ -18,13 +19,13 @@ import { ShoppingListEditComponent } from './shopping-list/shopping-list-edit/sh
 import { HeaderComponent } from './UI/header/header.component';
 import { UnselectedPageComponent } from './pages/unselected-page/unselected-page.component';
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
   {path: 'auth', component: AuthComponent},
-  {path: 'recipes', component: RecipeComponent, children: [
+  {path: 'recipes', canActivate: [AuthGuard], component: RecipeComponent, children: [
     {path: '', component: UnselectedPageComponent},
     {path: 'new', component: RecipeEditComponent},
     {path: ':recipeId', component: RecipeDetailComponent},

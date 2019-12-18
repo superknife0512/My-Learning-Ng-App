@@ -1,5 +1,5 @@
+import { AuthService } from './auth/auth.service';
 import { ShoppingService } from './shared/shopping.service';
-import { RecipeService } from './shared/recipe.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,19 +7,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
- 
-export class AppComponent implements OnInit {  currentPage: string = 'recipe';
+
+export class AppComponent implements OnInit {  currentPage = 'recipe';
   // selectedRecipe: Recipe;
 
-  constructor(private shoppingListService: ShoppingService){}
+  constructor(private shoppingListService: ShoppingService, private authService: AuthService) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.shoppingListService.changePageEvent
-      .subscribe((page: string)=>{
+      .subscribe((page: string) => {
         this.currentPage = page;
-      })
-  }
-  onChangePage(page: string){
-    this.currentPage = page;
+      });
+
+    this.authService.autoSignin();
   }
 }

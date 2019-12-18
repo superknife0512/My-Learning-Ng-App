@@ -7,17 +7,17 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpParams } from '@angular/
 export class AuthInterceptorService implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler){
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
     return this.authService.user.pipe(
-      take(1), 
-      exhaustMap(userData=>{
-      if(!userData){
-        return next.handle(req)
+      take(1),
+      exhaustMap(userData => {
+      if (!userData) {
+        return next.handle(req);
       }
       const modifiedReq = req.clone({
         params: new HttpParams().set('auth', userData.token)
-      })
-      return next.handle(modifiedReq)
-    }))
+      });
+      return next.handle(modifiedReq);
+    }));
   }
 }

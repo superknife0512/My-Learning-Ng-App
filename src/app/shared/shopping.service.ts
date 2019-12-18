@@ -10,35 +10,35 @@ export class ShoppingService {
     private ingredients: Array<Ingredient> = [
         new Ingredient('Cheese', 4),
         new Ingredient('Tomatoes', 2)
-    ]
+    ];
 
-    getIngredients(){
+    getIngredients() {
         return [...this.ingredients];
     }
-    
-    getIngredient(index: number){
-        return this.ingredients[index]
+
+    getIngredient(index: number) {
+        return this.ingredients[index];
     }
 
-    setIngredients(ingredients: Ingredient[]){
+    setIngredients(ingredients: Ingredient[]) {
         this.ingredients = [...ingredients];
         // change page to shopping list page
         // this.changePageEvent.next('shoppingList');
-        this.changeIngredientsEvent.next([...this.ingredients])
+        this.changeIngredientsEvent.next([...this.ingredients]);
     }
 
-    setIngredient(index:number, newIngredient: Ingredient){
+    setIngredient(index: number, newIngredient: Ingredient) {
         const ingredients = [...this.ingredients];
         ingredients[index] = newIngredient;
         this.setIngredients(ingredients);
     }
 
-    addIngredient(ingredientData: Ingredient){
+    addIngredient(ingredientData: Ingredient) {
         this.ingredients.push(ingredientData);
-        this.changeIngredientsEvent.next([...this.ingredients])
+        this.changeIngredientsEvent.next([...this.ingredients]);
     }
 
-    deleteIngredient(index: number){
+    deleteIngredient(index: number) {
         const ingredients = [...this.ingredients];
         ingredients.splice(index, 1);
         this.ingredients = [...ingredients];

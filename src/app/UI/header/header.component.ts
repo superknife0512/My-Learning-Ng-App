@@ -10,39 +10,39 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 export class HeaderComponent implements OnInit {
   isToggle = true;
-  isDropdown: boolean = false;
+  isDropdown = false;
   isAuth = false;
 
-  constructor(private storeService: DataStorageService, private authService: AuthService){}
+  constructor(private storeService: DataStorageService, private authService: AuthService) {}
 
-  @Output() changePageEvent = new EventEmitter<string>()
+  @Output() changePageEvent = new EventEmitter<string>();
   @Input() currentPage: string;
 
   ngOnInit() {
-    this.authService.user.subscribe(userData=>{
-      this.isAuth = userData ? true : false
-    })
+    this.authService.user.subscribe(userData => {
+      this.isAuth = userData ? true : false;
+    });
   }
 
-  onDropdown(){
+  onDropdown() {
     this.isDropdown = !this.isDropdown;
   }
 
-  changePage(page){
+  changePage(page) {
     this.changePageEvent.emit(page);
   }
 
-  saveData(){
+  saveData() {
     this.storeService.storeRecipes();
-    this.isDropdown = false
+    this.isDropdown = false;
   }
 
-  fetchData(){
+  fetchData() {
     this.storeService.fetchRecipes();
-    this.isDropdown = false
+    this.isDropdown = false;
   }
 
-  onLogout(){
-    this.authService.logout()
+  onLogout() {
+    this.authService.logout();
   }
 }
